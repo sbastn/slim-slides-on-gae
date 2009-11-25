@@ -1,0 +1,41 @@
+!/static/slimslides.png!
+
+h3. _YES_,
+
+You can build a decent presentation outside of a cubersome, difficult to use, all bells and whistles, no fun, presentation software suite!
+~~
+Skiny slides is a simple minimalistic presentation software that focus on content and not on superficial effects!
+
+*Use the cursor to move through this presentation*
+~~
+h1. Plain text format loves you!
+
+No more proprietary format to hold your data!
+~~
+h1. Advantages
+
+* Easy to compare presentations
+* Easy to type with the textile markup language
+* Easy to paste code or integrate other plain format text
+~~
+h1. About Textile
+
+Textile is a human to computer translator that lets you format your code in an easy way. 
+~~
+h1. Code!
+
+Copy and paste code directly into your slide! Skiny slides uses the javascript highliting library "shjs":http://shjs.sourceforge.net/. Just indicate the highlighter for your code and shjs takes care of it.
+~~
+<pre class="sh_python">
+class You(object):
+  def can_paste(self, ):
+    code = Code()
+    code.directly_into("skiny slides")
+
+  def feels_good(self, ):
+    print "and awesome ;-)" 
+</pre>
+
+Yes! It looks great!
+~~
+@this is more code@
