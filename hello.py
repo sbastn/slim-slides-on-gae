@@ -16,15 +16,19 @@ class index:
 
 class list:
     def GET(self):
-        presentations = os.listdir("./presentations")
+        presentations = {}
+        for root, dirs, files in os.walk("./presentations"):
+            presentations[root] = files
+
         return render.list(presentations)
 
 class show:
     def GET(self, path):
-        name = path.split("/")[0]
-        current_slide = int(path.split("/")[1])
+        dir = path.split("/")[0]
+        name = path.split("/")[1]
+        current_slide = int(path.split("/")[2])
         try:
-            file = open("./presentations/" + name, "r").read()
+            file = open(dir + "/" + name, "r").read()
             slides = file.split("~~")
             slide = textile.textile(slides[current_slide].strip())
         except IOError:
