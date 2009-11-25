@@ -3,39 +3,52 @@
 h3. _YES_,
 
 You can build a decent presentation outside of a cubersome, difficult to use, all bells and whistles, no fun, presentation software suite!
-~~
-Skiny slides is a simple minimalistic presentation software that focus on content and not on superficial effects!
 
-*Use the cursor to move through this presentation*
+*Use your keyboard arrows to move through this presentation*
+~~
+h3. slim slides is a simple minimalistic presentation software that focus on content and not on superficial effects!
 ~~
 h1. Plain text format loves you!
 
 No more proprietary format to hold your data!
 ~~
-h1. Advantages
+h1. So it becomes easy to...
 
-* Easy to compare presentations
-* Easy to type with the textile markup language
-* Easy to paste code or integrate other plain format text
+* compare presentations
+* use "textile":http://www.textism.com/tools/textile/ syntax to format your text
+* paste code or integrate other plain format text
 ~~
 h1. About Textile
 
-Textile is a human to computer translator that lets you format your code in an easy way. 
+Textile is a humane web text generator that lets you format your presentations in an easy way. _This presentation is formatted with textile_.
+
+Here, have a look at "the complete syntax":http://textile.thresholdstate.com/
 ~~
 h1. Code!
 
-Copy and paste code directly into your slide! Skiny slides uses the javascript highliting library "shjs":http://shjs.sourceforge.net/. Just indicate the highlighter for your code and shjs takes care of it.
+Copy and paste code directly into your presentation! Slim slides uses the javascript highliting library "shjs":http://shjs.sourceforge.net/. Just indicate the highlighter for your code and shjs takes care of it.
 ~~
 <pre class="sh_python">
 class You(object):
-  def can_paste(self, ):
+  def can_paste(self):
     code = Code()
-    code.directly_into("skiny slides")
+    code.directly_into("slim slides")
 
-  def feels_good(self, ):
+  def feels_good(self):
     print "and awesome ;-)" 
 </pre>
 
 Yes! It looks great!
 ~~
-@this is more code@
+h1. Give me an example!
+
+Ok, just look at the _welcome_ file under the presentation folder. It's this presentation.
+~~
+h2. This is too simple, it does not do what I want.
+
+Yep! I want to keep this simple, but I am planning to add:
+* themes
+* support outside of the appengine
+* more awesomeness
+
+^(end of presentation, we probably wrap around if you move to the next slide)^
