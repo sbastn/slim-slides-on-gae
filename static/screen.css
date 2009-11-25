@@ -1,0 +1,37 @@
+body {
+  background:#E0E0E0;
+  font-family: helvetica, arial, sans-serif;
+  font-size:1.5em;
+  color:#000;
+}
+pre { padding:1em; }
+img { border:none; }
+h1 { font-size:3em; }
+h2 { font-size:2.5em; }
+h3 { font-size:2em; }
+a {
+  color:#000FFF;
+  text-decoration:none;
+}
+a:hover {
+  color:#F58345;
+}
+.space {
+  height:3em;
+}
+.logo {
+  display: block; 
+  margin:auto;
+}
+.center {
+  text-align:center;
+} 
+.container {
+  margin-top: 2em;
+  margin-bottom: 5em;
+  margin-left:10em; 
+  margin-right:10em;
+}
+.slide_link {
+  display:none;
+}
