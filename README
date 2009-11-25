@@ -1,6 +1,6 @@
 slim slides ambitions are big but the software is tiny...
 
-Tired of having to deal with different proprietary formats for presentations (keynote, powerpoint, etc...), slim slides builds on top of the textile syntax markup to delivery presentations to your browser.
+Tired of having to deal with different proprietary formats for presentations (keynote, powerpoint, etc...), slim slides builds on top of the textile syntax markup to deliver presentations to your browser.
 
 Cooking recipe:
 1. Get google app engine
