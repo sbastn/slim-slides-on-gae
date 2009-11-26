@@ -16,28 +16,28 @@ class index:
 
 class list:
     def GET(self):
-        presentations = {}
-        for root, dirs, files in os.walk("./presentations"):
-            presentations[root] = files
+        presentations = []
+        for root, dirs, files in os.walk("presentations"):
+            presentations.append([root.replace("presentations", ""), files])
 
         return render.list(presentations)
 
 class show:
     def GET(self, path):
-        dir = path.split("/")[0]
-        name = path.split("/")[1]
-        current_slide = int(path.split("/")[2])
+        current_slide = int(path.split("/")[len(path.split("/")) - 1])
+        list_path = path.split("/")[0:len(path.split("/")) - 1]
+        file_path = "/".join(list_path)
         try:
-            file = open(dir + "/" + name, "r").read()
+            file = open("presentations/" + file_path, "r").read()
             slides = file.split("~~")
             slide = textile.textile(slides[current_slide].strip())
         except IOError:
-            slide = "the document '%s' was not found"  % name
-            return render.show(name, slide, 0, 0)
+            slide = "the document '%s' was not found"  % path
+            return render.show(path, slide, 0, 0)
 
         prev_slide, next_slide = self.get_next_and_previous_slides(current_slide, len(slides) - 1)
 
-        return render.show(name=name, slide=slide ,next_slide=next_slide, prev_slide=prev_slide)
+        return render.show(name=file_path, slide=slide ,next_slide=next_slide, prev_slide=prev_slide)
 
     def get_next_and_previous_slides(self, current_slide, slide_count):
         next_slide = current_slide + 1

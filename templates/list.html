@@ -2,6 +2,10 @@ $def with (presentations)
 $var title: Listing
 <img src="/static/slimslides.png" alt="logo" />
 <p>Current presentations:</p>
-$for dir in presentations.keys():
-  $for file in presentations[dir]:
-    <p><a href="/show/$dir/$file/0">$dir/$file</a></p>
+$for item in presentations:
+  $for file in item[1]:
+      $if "/" in item[0]:
+        <p><a href="/show$item[0]/$file/0">$item[0]/$file</a></p>
+      $else:
+        <p><a href="/show/$file/0">$file</a></p>
+
