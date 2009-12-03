@@ -15,8 +15,7 @@ class Slide(object):
 
     def get_data(self):
         self.current_slide = self.current_slide_from_path(self.path)
-        self.list_path = self.path.split("/")[0:len(self.path.split("/")) - 1]
-        self.name = "/".join(self.list_path)
+        self.name = "/".join(self.extract_name_from_path(self.path))
         try:
             file = open("presentations/" + self.name, "r").read()
             slides = file.split("~~")
@@ -31,6 +30,9 @@ class Slide(object):
 
     def current_slide_from_path(self, path):
         return int(path.split("/")[len(path.split("/")) - 1])
+
+    def extract_name_from_path(self, path):
+        return path.split("/")[0:len(path.split("/")) - 1]
 
     def get_next_and_previous_slides(self, current_slide, slide_count):
         next_slide = current_slide + 1
