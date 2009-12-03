@@ -1,6 +1,6 @@
 from vendor import web
-from vendor import textile
 from presentation import Presentation
+from presentation import Slide
 import os
 
 urls = (
@@ -21,33 +21,8 @@ class list:
 
 class show:
     def GET(self, path):
-        current_slide = int(path.split("/")[len(path.split("/")) - 1])
-        list_path = path.split("/")[0:len(path.split("/")) - 1]
-        file_path = "/".join(list_path)
-        try:
-            file = open("presentations/" + file_path, "r").read()
-            slides = file.split("~~")
-            slide = textile.textile(slides[current_slide].strip())
-        except IOError:
-            slide = "the document '%s' was not found"  % path
-            return render.show(path, slide, 0, 0)
-
-        prev_slide, next_slide = self.get_next_and_previous_slides(current_slide, len(slides) - 1)
-
-        return render.show(name=file_path, slide=slide ,next_slide=next_slide, prev_slide=prev_slide)
-
-    def get_next_and_previous_slides(self, current_slide, slide_count):
-        next_slide = current_slide + 1
-        prev_slide = current_slide - 1
-        
-        if next_slide > slide_count:
-            next_slide = 0
-
-        if prev_slide < 0:
-            prev_slide = slide_count
-
-        return prev_slide, next_slide
-
+        slide = Slide(path)
+        return render.show(slide=slide.get_data())
 
 app = web.application(urls, globals())
 main = app.cgirun()

@@ -1,6 +1,9 @@
-$def with (name, slide, next_slide, prev_slide)
-$var title: $name
-$:slide
-<a id="prev_link" class="slide_link" href="/show/$name/$prev_slide">Previous</a>
-<a id="next_link" class="slide_link" href="/show/$name/$next_slide">Next</a>  
+$def with (slide)
+$var title: $slide.name
+$:slide.content
+<a id="prev_link" class="slide_link" href="/show/$slide.name/$slide.prev_slide">Previous</a>
+<a id="next_link" class="slide_link"
+   href="/show/$slide.name/$slide.next_slide">Next</a>  
+
+
 
