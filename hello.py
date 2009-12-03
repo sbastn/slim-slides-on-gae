@@ -1,5 +1,6 @@
 from vendor import web
 from vendor import textile
+from presentation import Presentation
 import os
 
 urls = (
@@ -16,11 +17,7 @@ class index:
 
 class list:
     def GET(self):
-        presentations = []
-        for root, dirs, files in os.walk("presentations"):
-            presentations.append([root.replace("presentations", ""), files])
-
-        return render.list(presentations)
+        return render.list(Presentation.get_all())
 
 class show:
     def GET(self, path):
