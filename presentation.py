@@ -14,7 +14,7 @@ class Slide(object):
         self.path = path
 
     def get_data(self):
-        self.current_slide = int(self.path.split("/")[len(self.path.split("/")) - 1])
+        self.current_slide = self.current_slide_from_path(self.path)
         self.list_path = self.path.split("/")[0:len(self.path.split("/")) - 1]
         self.name = "/".join(self.list_path)
         try:
@@ -28,6 +28,9 @@ class Slide(object):
         self.prev_slide, self.next_slide = self.get_next_and_previous_slides(self.current_slide, len(slides) - 1)
 
         return self
+
+    def current_slide_from_path(self, path):
+        return int(path.split("/")[len(path.split("/")) - 1])
 
     def get_next_and_previous_slides(self, current_slide, slide_count):
         next_slide = current_slide + 1
