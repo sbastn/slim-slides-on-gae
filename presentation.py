@@ -24,7 +24,8 @@ class Slide(object):
             slides = []
             self.content = "the document '%s' was not found"  % path
         
-        self.prev_slide, self.next_slide = self.get_next_and_previous_slides(self.current_slide, len(slides) - 1)
+        self.prev_slide = self.get_prev_slide(self.current_slide, len(slides) - 1)
+        self.next_slide = Slide.get_next_slide(self.current_slide, len(slides) - 1)
 
         return self
 
@@ -34,16 +35,19 @@ class Slide(object):
     def extract_name_from_path(self, path):
         return path.split("/")[0:len(path.split("/")) - 1]
 
-    def get_next_and_previous_slides(self, current_slide, slide_count):
-        next_slide = current_slide + 1
-        prev_slide = current_slide - 1
-        
-        if next_slide > slide_count:
+    @staticmethod
+    def get_next_slide(current_slide, slide_count):
+        if current_slide + 1 > slide_count:
             next_slide = 0
+        else:
+            next_slide = current_slide + 1
+        return next_slide
 
-        if prev_slide < 0:
+    def get_prev_slide(self, current_slide, slide_count):
+        if current_slide - 1 < 0:
             prev_slide = slide_count
-
-        return prev_slide, next_slide
+        else:
+            prev_slide = current_slide - 1
+        return prev_slide
     
 
