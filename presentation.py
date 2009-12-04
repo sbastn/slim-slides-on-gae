@@ -16,7 +16,6 @@ class Slide(object):
     def get_data(self):
         self.current_slide = self.extract_slide_num_from_path()
         self.name = self.extract_name_from_path()
-        print self.path
         try: 
             file = open("presentations/" + self.name, "r").read()
             slides = file.split("~~")
