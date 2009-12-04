@@ -14,9 +14,9 @@ class Slide(object):
         self.path = path
 
     def get_data(self):
-        self.current_slide = self.current_slide_from_path(self.path)
-        self.name = "/".join(self.extract_name_from_path(self.path))
-        try:
+        self.current_slide = self.extract_slide_num_from_path()
+        self.name = self.extract_name_from_path()
+        try: 
             file = open("presentations/" + self.name, "r").read()
             slides = file.split("~~")
             self.content = textile.textile(slides[self.current_slide].strip())
@@ -25,18 +25,24 @@ class Slide(object):
             self.content = "the document '%s' was not found"  % path
         
         self.prev_slide = self.get_prev_slide(self.current_slide, len(slides) - 1)
-        self.next_slide = Slide.get_next_slide(self.current_slide, len(slides) - 1)
+        self.next_slide = self.get_next_slide(self.current_slide, len(slides) - 1)
 
         return self
 
-    def current_slide_from_path(self, path):
-        return int(path.split("/")[len(path.split("/")) - 1])
+    def extract_slide_num_from_path(self):
+        try:
+            return int(self.path.split("/")[len(self.path.split("/")) - 1])
+        except ValueError:
+            return 0
 
-    def extract_name_from_path(self, path):
-        return path.split("/")[0:len(path.split("/")) - 1]
+    def extract_name_from_path(self):
+        if len(self.path.split('/')) < 3:
+            name = self.path.split('/')[0:len(self.path.split('/'))]
+        else:
+            name = self.path.split('/')[0:len(self.path.split('/')) - 1]
+        return "/".join(name)
 
-    @staticmethod
-    def get_next_slide(current_slide, slide_count):
+    def get_next_slide(self, current_slide, slide_count):
         if current_slide + 1 > slide_count:
             next_slide = 0
         else:
@@ -50,4 +56,3 @@ class Slide(object):
             prev_slide = current_slide - 1
         return prev_slide
     
-
