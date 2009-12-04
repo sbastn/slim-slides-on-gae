@@ -28,15 +28,14 @@ h1. Code!
 
 Copy and paste code directly into your presentation! Slim slides uses the javascript highliting library "shjs":http://shjs.sourceforge.net/. Just indicate the highlighter for your code and shjs takes care of it.
 ~~
-<pre class="sh_python">
+
+pre(sh_python). 
 class You(object):
   def can_paste(self):
     code = Code()
-    code.directly_into("slim slides")
-
+    code.directly_into('slim slides')
   def feels_good(self):
-    print "and awesome ;-)" 
-</pre>
+    print 'and awesome ;-)'
 
 Yes! It looks great!
 ~~
