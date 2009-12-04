@@ -12,16 +12,16 @@ class SlideNumbersTest(unittest.TestCase):
 
 class SlideNameTest(unittest.TestCase):
     def test_extract_name_from_path(self):
-        s = Slide('/presentation/0')
-        self.assertEquals('/presentation', s.extract_name_from_path())
+        s = Slide('presentation/0')
+        self.assertEquals('presentation', s.extract_name_from_path())
 
     def test_extract_name_with_folder_from_path(self):
-        s = Slide('/folder/presentation/0')
-        self.assertEquals('/folder/presentation', s.extract_name_from_path())
+        s = Slide('folder/presentation/0')
+        self.assertEquals('folder/presentation', s.extract_name_from_path())
 
     def test_extract_name_with_no_slide_num_from_path(self):
-        s = Slide('/presentation')
-        self.assertEquals('/presentation', s.extract_name_from_path())
+        s = Slide('presentation')
+        self.assertEquals('presentation', s.extract_name_from_path())
 
 class SlideNavigationTest(unittest.TestCase):
     def test_get_next_slide(self):

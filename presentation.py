@@ -16,13 +16,14 @@ class Slide(object):
     def get_data(self):
         self.current_slide = self.extract_slide_num_from_path()
         self.name = self.extract_name_from_path()
+        print self.path
         try: 
             file = open("presentations/" + self.name, "r").read()
             slides = file.split("~~")
             self.content = textile.textile(slides[self.current_slide].strip())
         except IOError:
             slides = []
-            self.content = "the document '%s' was not found"  % path
+            self.content = "the document '%s' was not found"  % self.name
         
         self.prev_slide = self.get_prev_slide(self.current_slide, len(slides) - 1)
         self.next_slide = self.get_next_slide(self.current_slide, len(slides) - 1)
@@ -36,7 +37,7 @@ class Slide(object):
             return 0
 
     def extract_name_from_path(self):
-        if len(self.path.split('/')) < 3:
+        if len(self.path.split('/')) < 2:
             name = self.path.split('/')[0:len(self.path.split('/'))]
         else:
             name = self.path.split('/')[0:len(self.path.split('/')) - 1]
