@@ -2,11 +2,14 @@ from vendor import textile
 import os
 
 class Presentation(object):
+	
     @staticmethod
     def get_all():
         presentations = []
-        for root, dirs, files in os.walk("presentations"):
-            presentations.append([root.replace("presentations", ""), files])
+
+        for root, dirs, files in os.walk("slides"):
+            presentations.append([root.replace("slides", ""), files])
+
         return presentations
 
 class Slide(object):
@@ -17,7 +20,7 @@ class Slide(object):
         self.current_slide = self.extract_slide_num_from_path()
         self.name = self.extract_name_from_path()
         try: 
-            file = open("presentations/" + self.name, "r").read()
+            file = open("slides/" + self.name, "r").read()
             slides = file.split("~~")
             self.content = textile.textile(slides[self.current_slide].strip())
         except IOError:
