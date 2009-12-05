@@ -15,13 +15,14 @@ class Presentation(object):
 class Slide(object):
     def __init__(self, path):
         self.path = path
+        self.slide_separator = '~~'
 
     def get_data(self):
         self.current_slide = self.extract_slide_num_from_path()
         self.name = self.extract_name_from_path()
         try: 
             file = open('slides/' + self.name, 'r').read()
-            slides = file.split('~~')
+            slides = file.split(self.slide_separator)
             self.content = textile.textile(slides[self.current_slide].strip())
         except IOError:
             slides = []
