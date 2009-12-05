@@ -7,8 +7,8 @@ class Presentation(object):
     def get_all():
         presentations = []
 
-        for root, dirs, files in os.walk("slides"):
-            presentations.append([root.replace("slides", ""), files])
+        for root, dirs, files in os.walk('slides'):
+            presentations.append([root.replace('slides', ''), files])
 
         return presentations
 
@@ -20,12 +20,12 @@ class Slide(object):
         self.current_slide = self.extract_slide_num_from_path()
         self.name = self.extract_name_from_path()
         try: 
-            file = open("slides/" + self.name, "r").read()
-            slides = file.split("~~")
+            file = open('slides/' + self.name, 'r').read()
+            slides = file.split('~~')
             self.content = textile.textile(slides[self.current_slide].strip())
         except IOError:
             slides = []
-            self.content = "the document '%s' was not found"  % self.name
+            self.content = 'the document [ %s ] was not found'  % self.name
         
         self.prev_slide = self.get_prev_slide(self.current_slide, len(slides) - 1)
         self.next_slide = self.get_next_slide(self.current_slide, len(slides) - 1)
@@ -34,7 +34,7 @@ class Slide(object):
 
     def extract_slide_num_from_path(self):
         try:
-            return int(self.path.split("/")[len(self.path.split("/")) - 1])
+            return int(self.path.split('/')[len(self.path.split('/')) - 1])
         except ValueError:
             return 0
 
