@@ -1,5 +1,6 @@
 body {
-  background:#E0E0E0;
+  /* background:#E0E0E0; */
+  background:#E6E6E6;
   font-family: helvetica, arial, sans-serif;
   font-size:1.5em;
   color:#000;
@@ -35,3 +36,11 @@ a:hover {
 .slide_link {
   display:none;
 }
+.green  { color:#00914C; }
+.orange { color:#F57108; }
+.blue   { color:#2D5B91; }
+.red    { color:#911425; }
+.purple { color:#621B91; }
+.gold   { color:#98870B; }
+.black  { color:#000;    }
+.white  { color:#FFF;    }

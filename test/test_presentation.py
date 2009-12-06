@@ -1,5 +1,15 @@
-import unittest
 from presentation import Slide
+from mockito import *
+
+import unittest
+
+class SlideDataTest(unittest.TestCase):
+    def test_content_is_retrieved(self):
+        s = Slide('/dummy/0')
+        s.retriever = Mock()
+        when(s.retriever).open('/dummy', 0).thenReturn('simple content')
+        s.get_data()
+        self.assertEquals('simple content', s.content)
 
 class SlideNumbersTest(unittest.TestCase):
     def test_extract_slide_num_from_path(self):
