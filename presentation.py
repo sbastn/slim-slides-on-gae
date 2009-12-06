@@ -13,6 +13,7 @@ class Presentation(object):
         return presentations
 
 class Retriever(object):
+
     def __init__(self):
         self.slides = 0
         self.content = ''
@@ -28,20 +29,23 @@ class Retriever(object):
 
         return self.content
 
+    def total_slides(self):
+        return len(self.slides) - 1
+
 class Slide(object):
     def __init__(self, path):
         self.path = path
-        self.slide_separator = '~~'
         self.retriever = Retriever()
 
     def get_data(self):
-        self.current_slide = self.extract_slide_num_from_path()
+        current_slide = self.extract_slide_num_from_path()
         self.name = self.extract_name_from_path()
         
-        self.content = self.retriever.open(self.name, self.current_slide)
+        self.content = self.retriever.open(self.name, current_slide)
+        total_slides = self.retriever.total_slides()
         
-        self.prev_slide = self.get_prev_slide(self.current_slide, self.retriever.slides)
-        self.next_slide = self.get_next_slide(self.current_slide, self.retriever.slides)
+        self.prev_slide = self.get_prev_slide(current_slide, total_slides)
+        self.next_slide = self.get_next_slide(current_slide, total_slides)
 
         return self
 
