@@ -34,7 +34,7 @@ class Retriever(object):
 
 class Slide(object):
     def __init__(self, path):
-        self.path = path
+        self.path = path.split('/')
         self.retriever = Retriever()
 
     def get_data(self):
@@ -51,15 +51,15 @@ class Slide(object):
 
     def extract_slide_num_from_path(self):
         try:
-            return int(self.path.split('/')[len(self.path.split('/')) - 1])
+            return int(self.path[-1])
         except ValueError:
             return 0
 
     def extract_name_from_path(self):
-        if len(self.path.split('/')) < 2:
-            name = self.path.split('/')[0:len(self.path.split('/'))]
+        if len(self.path) < 2:
+            name = self.path[0:]
         else:
-            name = self.path.split('/')[0:len(self.path.split('/')) - 1]
+            name = self.path[0:-1]
         return "/".join(name)
 
     def get_next_slide(self, current_slide, slide_count):
