@@ -2,7 +2,6 @@ from vendor import textile
 import os
 
 class Presentation(object):
-	
     @staticmethod
     def get_all():
         presentations = []
@@ -13,7 +12,6 @@ class Presentation(object):
         return presentations
 
 class Retriever(object):
-
     def __init__(self):
         self.slides = 0
         self.content = ''

@@ -34,20 +34,17 @@ class SlideNameTest(unittest.TestCase):
         self.assertEquals('presentation', s.extract_name_from_path())
 
 class SlideNavigationTest(unittest.TestCase):
+    def setUp(self):
+        self.s = Slide('presentation')
+
     def test_get_next_slide(self):
-        s = Slide('presentation')
-        self.assertEquals(1, s.get_next_slide(0, 2))
+        self.assertEquals(1, self.s.get_next_slide(0, 2))
 
     def test_get_next_slides_wraps_around(self):
-        s = Slide('presentation')
-        self.assertEquals(0, s.get_next_slide(1, 1))
+        self.assertEquals(0, self.s.get_next_slide(1, 1))
 
     def test_get_prev_slide(self):
-        s = Slide('presentation')
-        self.assertEquals(0, s.get_prev_slide(1, 2))
+        self.assertEquals(0, self.s.get_prev_slide(1, 2))
 
     def test_prev_slides_wraps_around(self):
-        s = Slide('presentation')
-        self.assertEquals(2, s.get_prev_slide(0, 2))
-        
-        
+        self.assertEquals(2, self.s.get_prev_slide(0, 2))        
