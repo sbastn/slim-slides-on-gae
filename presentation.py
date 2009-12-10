@@ -3,10 +3,12 @@ import os
 
 
 class PresentationBrowser(object):
+    """ Retrieves all the presentations under the 'slides' folder.
+The slide folder can contain nested folders or symbolic links to other folders
+    """ 
     @staticmethod
     def get_all():
         presentations = []
-
         for root, dirs, files in os.walk('slides'):
             presentations.append([root.replace('slides', ''), files])
 
