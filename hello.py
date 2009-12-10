@@ -1,6 +1,6 @@
 from vendor import web
-from presentation import Presentation
-from presentation import Slide
+from presentation import PresentationBrowser
+from presentation import PresentationController
 import os
 
 urls = (
@@ -17,12 +17,12 @@ class index:
 
 class list:
     def GET(self):
-        return render.list(Presentation.get_all())
+        return render.list(PresentationBrowser.get_all())
 
 class show:
     def GET(self, path):
-        slide = Slide(path)
-        return render.show(slide=slide.get_data())
+        controller = PresentationController()
+        return render.show(slide=controller.get_slide(path))
 
 app = web.application(urls, globals())
 main = app.cgirun()
