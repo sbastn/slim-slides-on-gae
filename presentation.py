@@ -1,6 +1,8 @@
 from vendor import textile
 import os
 
+SLIDE_FOLDER = 'slides'
+SLIDE_LINE_BREAK = '~~'
 
 class PresentationBrowser(object):
     """ Retrieves all the presentations under the 'slides' folder.
@@ -9,8 +11,8 @@ The slide folder can contain nested folders or symbolic links to other folders
     @staticmethod
     def get_all():
         presentations = []
-        for root, dirs, files in os.walk('slides'):
-            presentations.append([root.replace('slides', ''), files])
+        for root, dirs, files in os.walk(SLIDE_FOLDER):
+            presentations.append([root.replace(SLIDE_FOLDER, ''), files])
 
         return presentations
 
@@ -78,7 +80,7 @@ class Loader(object):
         p.name = name
         try:
             file = open('slides/' + name, 'r').read()
-            p.slides = file.split('~~')
+            p.slides = file.split(SLIDE_LINE_BREAK)
         except IOError:
             p.slides = []
 

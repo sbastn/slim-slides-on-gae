@@ -10,9 +10,9 @@ class SlideDataTest(unittest.TestCase):
         slide = self.p.get_slide('/welcome/0')
 
         self.assertEquals('/welcome', slide.name)
+        self.assertTrue('YES' in slide.content, 'got %s' % slide.content)
         self.assertEquals(1, slide.next_link)
         self.assertEquals(8, slide.prev_link)
-        self.assertTrue('YES' in slide.content)
 
     def test_retrieve_not_found_file(self):
         slide = self.p.get_slide('/i/do/not/exist')
