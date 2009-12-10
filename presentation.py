@@ -1,6 +1,7 @@
 from vendor import textile
 import os
 
+
 class PresentationBrowser(object):
     @staticmethod
     def get_all():
@@ -10,6 +11,7 @@ class PresentationBrowser(object):
             presentations.append([root.replace('slides', ''), files])
 
         return presentations
+
 
 class PresentationController(object):
     """ Coordinates the work to get a presentation based on the path
@@ -66,12 +68,12 @@ class PresentationController(object):
             prev_slide = current_slide - 1
         return prev_slide
 
+
 class Loader(object):
     @staticmethod
     def load(name):
         p = Presentation()
         p.name = name
-
         try:
             file = open('slides/' + name, 'r').read()
             p.slides = file.split('~~')
@@ -79,6 +81,7 @@ class Loader(object):
             p.slides = []
 
         return p
+
 
 class Presentation(object):
     def __init__(self):
