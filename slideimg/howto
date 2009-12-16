@@ -1,0 +1,5 @@
+1. symlink to the presentation folder where you have your images and presentations:
+		ln -s img ../../../slim-slides-presentations/
+		
+2. in your presentation (textile format), include the image by linking to it:
+		!/slideimg/img/logo.png!
