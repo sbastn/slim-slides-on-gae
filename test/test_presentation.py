@@ -42,8 +42,11 @@ class SlideNameTest(unittest.TestCase):
     def test_extract_name_with_no_slide_number(self):
         self.assertEquals('presentation', self.p.extract_name('presentation'))
 
-    def test_extract_name_with_no_slide_num_ber_and_folder(self):
+    def test_extract_name_with_no_slide_number_and_folder(self):
         self.assertEquals('hello/world', self.p.extract_name('hello/world'))
+
+    def test_extract_name_with_folder_with_dashes(self):
+        self.assertEquals('hello-world/other-world', self.p.extract_name('hello-world/other-world'))
 
 class SlideNavigationTest(unittest.TestCase):
     def setUp(self):

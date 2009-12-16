@@ -6,8 +6,9 @@ SLIDE_LINE_BREAK = '~~'
 
 class PresentationBrowser(object):
     """ Retrieves all the presentations under the 'slides' folder.
-The slide folder can contain nested folders or symbolic links to other folders
+    The slide folder can contain nested folders or symbolic links to other folders
     """ 
+
     @staticmethod
     def get_all():
         presentations = []
@@ -18,8 +19,8 @@ The slide folder can contain nested folders or symbolic links to other folders
 
 
 class PresentationController(object):
-    """ Coordinates the work to get a presentation based on the path
-    """
+    """ Coordinates the work to get a presentation based on the path """
+
     def get_slide(self, url):
         name = self.extract_name(url)
         slide_number = self.extract_slide(url)
@@ -74,6 +75,7 @@ class PresentationController(object):
 
 
 class Loader(object):
+    """ loads a presentation based on a url """
     @staticmethod
     def load(name):
         p = Presentation()
@@ -88,12 +90,14 @@ class Loader(object):
 
 
 class Presentation(object):
+    """ representation of a container of one or more slides """
     def __init__(self):
         self.name = ''
         self.slides = []
     
 
 class Slide(object):
+    """ this is the slide object that the view is rendering """
     def __init__(self, name, content, prev_link, next_link):
         self.name = name
         self.content = content
