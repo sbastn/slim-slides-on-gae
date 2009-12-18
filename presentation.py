@@ -60,18 +60,16 @@ class PresentationController(object):
         return Slide(name, 'the file [ %s ] was not found' % name, 0 , 0)
 
     def get_next_link(self, current_slide, slide_count):
-        if current_slide + 1 > slide_count:
-            next_slide = 0
-        else:
-            next_slide = current_slide + 1
-        return next_slide
+       if current_slide + 1 > slide_count:
+           return 0
+       else:
+           return current_slide + 1
 
     def get_prev_link(self, current_slide, slide_count):
         if current_slide - 1 < 0:
-            prev_slide = slide_count
+            return slide_count
         else:
-            prev_slide = current_slide - 1
-        return prev_slide
+            return current_slide - 1
 
 
 class Loader(object):
@@ -103,3 +101,6 @@ class Slide(object):
         self.content = content
         self.prev_link = prev_link
         self.next_link = next_link
+
+
+next_link = lambda x, y: x + 1 if x + 1 <= y else 0
