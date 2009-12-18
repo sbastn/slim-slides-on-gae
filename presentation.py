@@ -36,7 +36,7 @@ class PresentationController(object):
         if path[-1].isdigit():
             return '/'.join(path[0:-1])
         else:
-            return '/'.join(path[0:])
+            return url
 
     def extract_slide(self, url):
         path = url.split('/')
@@ -101,6 +101,3 @@ class Slide(object):
         self.content = content
         self.prev_link = prev_link
         self.next_link = next_link
-
-
-next_link = lambda x, y: x + 1 if x + 1 <= y else 0

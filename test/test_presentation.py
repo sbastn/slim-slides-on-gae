@@ -63,3 +63,4 @@ class SlideNavigationTest(unittest.TestCase):
 
     def test_prev_slides_wraps_around(self):
         self.assertEquals(2, self.p.get_prev_link(0, 2))        
+
